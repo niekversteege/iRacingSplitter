@@ -1,0 +1,1 @@
+Experimentation platform for the iRacing splitting system. The first goal is to replicate some basic functionality. Then try to add a way to have a maximum iRating difference in a split. Eventually I would like to be able to make full multi class splits.
