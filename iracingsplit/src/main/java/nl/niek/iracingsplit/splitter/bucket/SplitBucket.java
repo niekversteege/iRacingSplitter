@@ -20,4 +20,9 @@ public class SplitBucket
 	{
 		drivers = new HashSet<Driver>();
 	}
+
+	public void add(final Driver driver)
+	{
+		this.drivers.add(driver);
+	}
 }
