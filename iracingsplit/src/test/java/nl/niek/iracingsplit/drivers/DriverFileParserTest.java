@@ -36,4 +36,51 @@ public class DriverFileParserTest
 		assertEquals(new Driver("Roderic", "Kreunen", 4004), result.get(1));
 	}
 
+	@Test
+	public void testCreateDrivers()
+	{
+		
+	}
+	
+	@Test
+	public void testCreateDriversNullArg()
+	{
+		
+	}
+	
+	@Test
+	public void testCreateDriversTooLongArg()
+	{
+		
+	}
+	
+	@Test
+	public void testCreateDriversTooBigArg()
+	{
+		
+	}
+	
+	@Test
+	public void testMakeDriver()
+	{
+		
+	}
+	
+	@Test
+	public void testMakeDriverNullArg()
+	{
+		
+	}
+	
+	@Test
+	public void testMakeDriverTooLongArg()
+	{
+		
+	}
+	
+	@Test
+	public void testMakeDriverTooShortArg()
+	{
+		
+	}
 }
