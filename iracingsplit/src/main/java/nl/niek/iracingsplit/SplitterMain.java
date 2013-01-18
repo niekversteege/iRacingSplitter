@@ -1,4 +1,4 @@
-package nl.niek.iracingsplit.main;
+package nl.niek.iracingsplit;
 
 public class SplitterMain {
 	/**
