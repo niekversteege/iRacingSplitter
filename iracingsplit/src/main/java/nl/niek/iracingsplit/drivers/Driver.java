@@ -14,7 +14,7 @@ public class Driver implements Comparable<Driver>
 	private String	firstName;
 	private String	lastName;
 
-	Driver(String firstName, String lastName, int iRating)
+	public Driver(String firstName, String lastName, int iRating)
 	{
 		this.iRating = iRating;
 		this.firstName = firstName;

@@ -16,7 +16,6 @@ import org.apache.log4j.Logger;
  * @author Niek
  * 
  */
-@Deprecated
 public class DriverFileParser
 {
 	private static final String	DRIVER_SPLIT_TOKEN		= ",";
