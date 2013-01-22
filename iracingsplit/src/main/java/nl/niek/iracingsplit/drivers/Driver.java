@@ -7,7 +7,7 @@ package nl.niek.iracingsplit.drivers;
  * @author Niek
  * 
  */
-public class Driver
+public class Driver implements Comparable<Driver>
 {
 
 	private int		iRating;
@@ -34,5 +34,20 @@ public class Driver
 	public final String getLastName()
 	{
 		return lastName;
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		// TODO Look at name
+		// TODO Look at irating
+		return super.equals(obj);
+	}
+
+	@Override
+	public int compareTo(Driver o)
+	{
+		// TODO: Compare by irating
+		return 0;
 	}
 }

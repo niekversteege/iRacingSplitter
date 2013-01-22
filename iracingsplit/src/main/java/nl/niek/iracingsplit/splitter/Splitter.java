@@ -1,5 +1,6 @@
 package nl.niek.iracingsplit.splitter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -45,7 +46,21 @@ public class Splitter
 	 */
 	public List<SplitBucket> split(Set<Driver> allDrivers)
 	{
+		int nrOfDrivers = allDrivers.size();
+	
+		List<SplitBucket> buckets = new ArrayList<>();
+		
+		if (nrOfDrivers > MAX_CARS_ON_TRACK)
+		{
+			// TODO: determine how many splits to make (modulo)
+			// TODO: use a binary tree?
+			// TODO: more cool stuff?
+		}
+		else
+		{
+			buckets.add(new SplitBucket(allDrivers));
+		}
 
-		return null;
+		return buckets;
 	}
 }

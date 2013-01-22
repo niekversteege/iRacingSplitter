@@ -8,6 +8,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Parse a file of drivers separated by , into a list of drivers. I don't know
+ * why I made this since it isn't really that useful. Especially since it
+ * doesn't work =D.
+ * 
+ * @author Niek
+ * 
+ */
+@Deprecated
 public class DriverFileParser
 {
 	private static final String	DRIVER_SPLIT_TOKEN		= ",";
