@@ -47,9 +47,9 @@ public class Splitter
 	public List<SplitBucket> split(Set<Driver> allDrivers)
 	{
 		int nrOfDrivers = allDrivers.size();
-	
-		List<SplitBucket> buckets = new ArrayList<>();
-		
+
+		List<SplitBucket> buckets = new ArrayList<SplitBucket>();
+
 		if (nrOfDrivers > MAX_CARS_ON_TRACK)
 		{
 			// TODO: determine how many splits to make (modulo)

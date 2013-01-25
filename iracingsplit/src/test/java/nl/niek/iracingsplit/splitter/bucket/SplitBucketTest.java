@@ -20,7 +20,7 @@ public class SplitBucketTest
 	public void setUp() throws Exception
 	{
 		bucket = new SplitBucket();
-		drivers = new ArrayList<>();
+		drivers = new ArrayList<Driver>();
 		
 		drivers.add(new Driver("Niek", "Versteege", 4000));
 	}
