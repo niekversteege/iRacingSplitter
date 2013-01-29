@@ -1,9 +1,10 @@
 package nl.niek.iracingsplit.splitter.bucket;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import nl.niek.iracingsplit.drivers.Driver;
 
@@ -12,41 +13,100 @@ import org.junit.Test;
 
 public class SplitBucketTest
 {
-	SplitBucket bucket;
-	
-	List<Driver> drivers;
+	private SplitBucket	bucket;
+
+	private Set<Driver>	drivers;
 
 	@Before
 	public void setUp() throws Exception
 	{
-		bucket = new SplitBucket();
-		drivers = new ArrayList<Driver>();
-		
-		drivers.add(new Driver("Niek", "Versteege", 4000));
+		drivers = new HashSet<Driver>();
+		drivers.add(new Driver("Niek", "Versteege", 4600));
+		drivers.add(new Driver("Roderic", "Kreunen", 3600));
+		drivers.add(new Driver("Paul", "Ilbrink", 5200));
+		drivers.add(new Driver("Andy", "Kirschetorte", 3000));
+		drivers.add(new Driver("Joe", "Junior", 3000));
+		drivers.add(new Driver("Pablo", "Lopez", 4600));
+
+		bucket = new SplitBucket(drivers);
 	}
 
 	@Test
 	public void testSplitBucket()
 	{
-		fail("Not yet implemented");
+		assertFalse(bucket.isEmpty());
 	}
 
-	@Test
-	public void testSplitBucketCollectionOfDriver()
+	@Test(expected = IllegalArgumentException.class)
+	public void testSplitBucketNull()
 	{
-		fail("Not yet implemented");
+		bucket = new SplitBucket(null);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSplitBucketEmpty()
+	{
+		bucket = new SplitBucket(new HashSet<Driver>());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSplitBucketNullElement()
+	{
+		drivers = new HashSet<Driver>();
+		Driver d = null;
+		drivers.add(d);
+		bucket = new SplitBucket(drivers);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSplitBucketEmptyElement()
+	{
+		drivers = new HashSet<Driver>();
+		Driver d = new Driver("", "", 234);
+		drivers.add(d);
+		bucket = new SplitBucket(drivers);
 	}
 
 	@Test
 	public void testAdd()
 	{
-		fail("Not yet implemented");
+		int old = bucket.size();
+		bucket.add(new Driver("Test", "tester", 8999));
+		assertEquals(old + 1, bucket.size());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddNull()
+	{
+		bucket.add(null);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testAddEmpty()
+	{
+		bucket.add(new Driver("", "", 0));
+	}
+
+	@Test
+	public void testAddIdentical()
+	{
+		bucket.add(new Driver("Test", "tester", 8999));
+		assertFalse(bucket.add(new Driver("Test", "tester", 8999)));
 	}
 
 	@Test
 	public void testAvgIrating()
 	{
-		fail("Not yet implemented");
+		int total = 0;
+
+		for (Driver d : drivers)
+		{
+			total += d.getiRating();
+		}
+
+		int expected = total / drivers.size();
+
+		assertEquals(expected, bucket.avgIrating());
 	}
 
 }
