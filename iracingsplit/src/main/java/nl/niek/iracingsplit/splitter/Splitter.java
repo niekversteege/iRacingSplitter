@@ -16,9 +16,9 @@ import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
  */
 public class Splitter
 {
-	private final int	MAX_CARS_ON_TRACK;
-	private final int	MIN_DRIVERS_FOR_OFFICIAL;
-	private final int	IRATING_TRESHOLD;
+	private final int	maxCarsOnTrack;
+	private final int	minDrivers;
+	private final int	iratingTreshold;
 
 	/**
 	 * Create a splitter with the correct settings.
@@ -32,9 +32,9 @@ public class Splitter
 	public Splitter(final int maxCarsOnTrack, final int minDrivers,
 			final int iratingTreshold)
 	{
-		this.MAX_CARS_ON_TRACK = maxCarsOnTrack;
-		this.MIN_DRIVERS_FOR_OFFICIAL = minDrivers;
-		this.IRATING_TRESHOLD = iratingTreshold;
+		this.maxCarsOnTrack = maxCarsOnTrack;
+		this.minDrivers = minDrivers;
+		this.iratingTreshold = iratingTreshold;
 	}
 
 	/**
@@ -44,7 +44,8 @@ public class Splitter
 	 * @param builder
 	 *            The source of all the drivers. The getDrivers() method is
 	 *            called on it.
-	 * @return
+	 * @return A list of all splits. If no proper splitting could be achieved
+	 *         the list will be empty.
 	 */
 	public List<SplitBucket> split(IDriverBuilder builder)
 	{

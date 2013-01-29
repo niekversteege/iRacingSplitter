@@ -27,8 +27,26 @@ public class SplitterTest
 				IRATING_TRESHOLD);
 	}
 
-	@Test
-	public void testCreationBoundaries()
+	@Test(expected = IllegalArgumentException.class)
+	public void testTresholdTooBig()
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testMinDriversTooLarge()
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testMinDriversLargerThanMaxCars()
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testMaxCarsTooBig()
 	{
 		fail("Not yet implemented");
 	}
@@ -39,10 +57,29 @@ public class SplitterTest
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testOneSplit()
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testExactMaxNumbers()
+	{
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSplitNullBuilder()
+	{
+		fail("Not yet implemented");
+	}
+
 	/**
 	 * Testing class only.
+	 * 
 	 * @author Niek
-	 *
+	 * 
 	 */
 	private class MockDriverBuilder implements IDriverBuilder
 	{
