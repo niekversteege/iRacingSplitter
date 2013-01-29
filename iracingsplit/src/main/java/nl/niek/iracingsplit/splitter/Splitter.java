@@ -2,9 +2,7 @@ package nl.niek.iracingsplit.splitter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
-import nl.niek.iracingsplit.driver.Driver;
 import nl.niek.iracingsplit.driver.IDriverBuilder;
 import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
 
@@ -40,28 +38,17 @@ public class Splitter
 	}
 
 	/**
+	 * Get all the drivers from the given builder and construct a bunch of
+	 * racing splits based on the parameters the splitter was initialized with.
 	 * 
-	 * @param allDrivers
-	 *            A list of all the drivers that have signed up for the race.
+	 * @param builder
+	 *            The source of all the drivers. The getDrivers() method is
+	 *            called on it.
 	 * @return
 	 */
 	public List<SplitBucket> split(IDriverBuilder builder)
 	{
-		Set<Driver> drivers = builder.getDrivers();
-		int nrOfDrivers = drivers.size();
-
 		List<SplitBucket> buckets = new ArrayList<SplitBucket>();
-
-		if (nrOfDrivers > MAX_CARS_ON_TRACK)
-		{
-			// TODO: determine how many splits to make (modulo)
-			// TODO: use a binary tree?
-			// TODO: more cool stuff?
-		}
-		else
-		{
-			buckets.add(new SplitBucket(drivers));
-		}
 
 		return buckets;
 	}

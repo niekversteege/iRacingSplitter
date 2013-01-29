@@ -39,6 +39,11 @@ public class SplitterTest
 		fail("Not yet implemented");
 	}
 
+	/**
+	 * Testing class only.
+	 * @author Niek
+	 *
+	 */
 	private class MockDriverBuilder implements IDriverBuilder
 	{
 		private Set<Driver>	drivers;
