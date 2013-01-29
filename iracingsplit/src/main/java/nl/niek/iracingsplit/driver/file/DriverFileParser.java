@@ -1,4 +1,4 @@
-package nl.niek.iracingsplit.driver.factory.file;
+package nl.niek.iracingsplit.driver.file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 import nl.niek.iracingsplit.driver.Driver;
-import nl.niek.iracingsplit.driver.factory.IDriverBuilder;
+import nl.niek.iracingsplit.driver.IDriverBuilder;
 
 import org.apache.log4j.Logger;
 

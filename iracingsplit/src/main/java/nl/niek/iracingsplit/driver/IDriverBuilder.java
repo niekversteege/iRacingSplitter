@@ -1,8 +1,7 @@
-package nl.niek.iracingsplit.driver.factory;
+package nl.niek.iracingsplit.driver;
 
 import java.util.Set;
 
-import nl.niek.iracingsplit.driver.Driver;
 
 public interface IDriverBuilder
 {

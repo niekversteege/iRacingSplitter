@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import nl.niek.iracingsplit.driver.Driver;
-import nl.niek.iracingsplit.driver.factory.IDriverBuilder;
+import nl.niek.iracingsplit.driver.IDriverBuilder;
 import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
 
 /**
