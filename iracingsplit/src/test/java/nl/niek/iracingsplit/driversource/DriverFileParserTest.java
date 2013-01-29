@@ -1,9 +1,12 @@
-package nl.niek.iracingsplit.drivers;
+package nl.niek.iracingsplit.driversource;
 
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.util.List;
+
+import nl.niek.iracingsplit.Driver;
+import nl.niek.iracingsplit.driversource.DriverFileParser;
 
 import org.junit.Before;
 import org.junit.Test;

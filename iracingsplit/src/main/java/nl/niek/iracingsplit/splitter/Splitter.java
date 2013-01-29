@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import nl.niek.iracingsplit.drivers.Driver;
+import nl.niek.iracingsplit.Driver;
 import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
 
 /**

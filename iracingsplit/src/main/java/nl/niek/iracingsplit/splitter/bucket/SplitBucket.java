@@ -3,7 +3,7 @@ package nl.niek.iracingsplit.splitter.bucket;
 import java.util.HashSet;
 import java.util.Set;
 
-import nl.niek.iracingsplit.drivers.Driver;
+import nl.niek.iracingsplit.Driver;
 
 /**
  * This class represents a list of drivers in a split. These buckets are created

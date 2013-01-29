@@ -1,10 +1,12 @@
-package nl.niek.iracingsplit.drivers;
+package nl.niek.iracingsplit.driversource;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import nl.niek.iracingsplit.Driver;
 
 import org.apache.log4j.Logger;
 

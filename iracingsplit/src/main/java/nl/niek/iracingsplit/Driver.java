@@ -1,4 +1,4 @@
-package nl.niek.iracingsplit.drivers;
+package nl.niek.iracingsplit;
 
 /**
  * Representation of a driver with names and iRating. Can only be created

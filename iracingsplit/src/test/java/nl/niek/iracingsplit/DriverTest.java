@@ -1,6 +1,8 @@
-package nl.niek.iracingsplit.drivers;
+package nl.niek.iracingsplit;
 
 import static org.junit.Assert.fail;
+
+import nl.niek.iracingsplit.Driver;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -47,6 +49,18 @@ public class DriverTest
 
 	@Test
 	public void testCompareTo()
+	{
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCompareToSmaller()
+	{
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testCompareToBigger()
 	{
 		fail("Not yet implemented");
 	}
