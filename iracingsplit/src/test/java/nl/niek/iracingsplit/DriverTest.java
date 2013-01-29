@@ -1,8 +1,8 @@
 package nl.niek.iracingsplit;
 
-import static org.junit.Assert.fail;
-
-import nl.niek.iracingsplit.Driver;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -32,42 +32,41 @@ public class DriverTest
 	@Test
 	public void testEqualsObject()
 	{
-		fail("Not yet implemented");
+		assertTrue(driver.equals(new Driver("Niek", "Versteege", 3424)));
 	}
 
 	@Test
 	public void testEqualsFalse()
 	{
-		fail("Not yet implemented");
+		assertFalse(driver.equals(new Driver("Niek", "Versteege", 3624)));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testEqualsNotDriver()
 	{
-		fail("Not yet implemented");
+		driver.equals(new MockDriver());
 	}
 
 	@Test
 	public void testCompareTo()
 	{
-		fail("Not yet implemented");
+		assertEquals(0, driver.compareTo(new Driver("asdf", "fdds", 3424)));
 	}
-	
+
 	@Test
 	public void testCompareToSmaller()
 	{
-		fail("Not yet implemented");
+		assertEquals(-1, driver.compareTo(new Driver("asdf", "fdds", 3423)));
 	}
-	
+
 	@Test
 	public void testCompareToBigger()
 	{
-		fail("Not yet implemented");
+		assertEquals(1, driver.compareTo(new Driver("asdf", "fdds", 3425)));
 	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testComareToNotDriver()
+	
+	private class MockDriver
 	{
-		fail("Not yet implemented");
+		
 	}
 }

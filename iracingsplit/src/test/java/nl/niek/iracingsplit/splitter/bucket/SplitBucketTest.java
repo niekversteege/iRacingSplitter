@@ -58,15 +58,6 @@ public class SplitBucketTest
 		bucket = new SplitBucket(drivers);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testSplitBucketEmptyElement()
-	{
-		drivers = new HashSet<Driver>();
-		Driver d = new Driver("", "", 234);
-		drivers.add(d);
-		bucket = new SplitBucket(drivers);
-	}
-
 	@Test
 	public void testAdd()
 	{
@@ -78,13 +69,8 @@ public class SplitBucketTest
 	@Test(expected = IllegalArgumentException.class)
 	public void testAddNull()
 	{
-		bucket.add(null);
-	}
-
-	@Test(expected = IllegalArgumentException.class)
-	public void testAddEmpty()
-	{
-		bucket.add(new Driver("", "", 0));
+		Driver d = null;
+		bucket.add(d);
 	}
 
 	@Test
