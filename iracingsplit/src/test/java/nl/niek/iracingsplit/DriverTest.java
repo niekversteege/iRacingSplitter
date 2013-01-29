@@ -56,13 +56,13 @@ public class DriverTest
 	@Test
 	public void testCompareToSmaller()
 	{
-		assertEquals(-1, driver.compareTo(new Driver("asdf", "fdds", 3423)));
+		assertEquals(1, driver.compareTo(new Driver("asdf", "fdds", 3423)));
 	}
 
 	@Test
 	public void testCompareToBigger()
 	{
-		assertEquals(1, driver.compareTo(new Driver("asdf", "fdds", 3425)));
+		assertEquals(-1, driver.compareTo(new Driver("asdf", "fdds", 3425)));
 	}
 
 	private class MockDriver

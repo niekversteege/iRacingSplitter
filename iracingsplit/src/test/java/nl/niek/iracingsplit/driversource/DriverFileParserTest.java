@@ -1,6 +1,7 @@
 package nl.niek.iracingsplit.driversource;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.List;
@@ -42,48 +43,48 @@ public class DriverFileParserTest
 	@Test
 	public void testCreateDrivers()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testCreateDriversNullArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testCreateDriversTooLongArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testCreateDriversTooBigArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testMakeDriver()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testMakeDriverNullArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testMakeDriverTooLongArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 	
 	@Test
 	public void testMakeDriverTooShortArg()
 	{
-		
+		fail("Not yet implemented");
 	}
 }

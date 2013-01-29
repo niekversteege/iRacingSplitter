@@ -56,7 +56,7 @@ public class Driver implements Comparable<Driver>
 			String otherFirstName = someDriver.getFirstName();
 			String otherLastName = someDriver.getLastName();
 			int otherIRating = someDriver.getiRating();
-			
+
 			return firstName.equals(otherFirstName)
 					&& lastName.equals(otherLastName)
 					&& iRating == otherIRating;
@@ -68,7 +68,21 @@ public class Driver implements Comparable<Driver>
 	@Override
 	public int compareTo(Driver o)
 	{
-		// TODO: Compare by irating
-		return 0;
+		int otherIrating = o.getiRating();
+		int retVal = 0;
+
+		if (iRating == otherIrating)
+		{
+			retVal = 0;
+		}
+		else if (iRating < otherIrating)
+		{
+			retVal = -1;
+		}
+		else if (iRating > otherIrating)
+		{
+			retVal = 1;
+		}
+		return retVal;
 	}
 }
