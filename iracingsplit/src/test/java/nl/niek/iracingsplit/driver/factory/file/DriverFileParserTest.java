@@ -1,4 +1,4 @@
-package nl.niek.iracingsplit.driversource;
+package nl.niek.iracingsplit.driver.factory.file;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -6,7 +6,8 @@ import static org.junit.Assert.fail;
 import java.io.File;
 import java.util.List;
 
-import nl.niek.iracingsplit.Driver;
+import nl.niek.iracingsplit.driver.Driver;
+import nl.niek.iracingsplit.driver.factory.file.DriverFileParser;
 
 import org.junit.Before;
 import org.junit.Ignore;

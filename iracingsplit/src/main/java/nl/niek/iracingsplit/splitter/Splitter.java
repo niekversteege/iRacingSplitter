@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import nl.niek.iracingsplit.Driver;
+import nl.niek.iracingsplit.driver.Driver;
+import nl.niek.iracingsplit.driver.factory.IDriverBuilder;
 import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
 
 /**
@@ -44,9 +45,10 @@ public class Splitter
 	 *            A list of all the drivers that have signed up for the race.
 	 * @return
 	 */
-	public List<SplitBucket> split(Set<Driver> allDrivers)
+	public List<SplitBucket> split(IDriverBuilder builder)
 	{
-		int nrOfDrivers = allDrivers.size();
+		Set<Driver> drivers = builder.getDrivers();
+		int nrOfDrivers = drivers.size();
 
 		List<SplitBucket> buckets = new ArrayList<SplitBucket>();
 
@@ -58,7 +60,7 @@ public class Splitter
 		}
 		else
 		{
-			buckets.add(new SplitBucket(allDrivers));
+			buckets.add(new SplitBucket(drivers));
 		}
 
 		return buckets;

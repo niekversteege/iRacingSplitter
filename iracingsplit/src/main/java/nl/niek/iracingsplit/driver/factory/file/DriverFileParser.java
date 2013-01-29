@@ -1,12 +1,14 @@
-package nl.niek.iracingsplit.driversource;
+package nl.niek.iracingsplit.driver.factory.file;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
-import nl.niek.iracingsplit.Driver;
+import nl.niek.iracingsplit.driver.Driver;
+import nl.niek.iracingsplit.driver.factory.IDriverBuilder;
 
 import org.apache.log4j.Logger;
 
@@ -18,7 +20,7 @@ import org.apache.log4j.Logger;
  * @author Niek
  * 
  */
-public class DriverFileParser
+public class DriverFileParser implements IDriverBuilder
 {
 	private static final String	DRIVER_SPLIT_TOKEN		= ",";
 
@@ -135,5 +137,12 @@ public class DriverFileParser
 		}
 
 		return new String(buffer);
+	}
+
+	@Override
+	public Set<Driver> getDrivers()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

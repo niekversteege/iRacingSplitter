@@ -6,7 +6,7 @@ import static org.junit.Assert.assertFalse;
 import java.util.HashSet;
 import java.util.Set;
 
-import nl.niek.iracingsplit.Driver;
+import nl.niek.iracingsplit.driver.Driver;
 
 import org.junit.Before;
 import org.junit.Test;

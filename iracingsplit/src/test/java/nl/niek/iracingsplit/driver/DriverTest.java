@@ -1,8 +1,10 @@
-package nl.niek.iracingsplit;
+package nl.niek.iracingsplit.driver;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+
+import nl.niek.iracingsplit.driver.Driver;
 
 import org.junit.Before;
 import org.junit.Test;
