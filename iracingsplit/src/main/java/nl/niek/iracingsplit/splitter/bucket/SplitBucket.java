@@ -64,12 +64,7 @@ public class SplitBucket
 	{
 		if (driver == null)
 		{
-			throw new IllegalArgumentException("Driver names cannot be empty.");
-		}
-
-		if (driver.getFirstName().isEmpty() || driver.getLastName().isEmpty())
-		{
-			throw new IllegalArgumentException("Driver names cannot be empty.");
+			throw new IllegalArgumentException("Driver cannot be null.");
 		}
 
 		return this.drivers.add(driver);
