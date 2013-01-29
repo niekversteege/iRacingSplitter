@@ -43,6 +43,7 @@ public class DriverFileParser
 
 	private List<Driver>		allDrivers;
 
+	@Deprecated
 	public DriverFileParser(File fileToScan)
 	{
 		if (fileToScan == null)
