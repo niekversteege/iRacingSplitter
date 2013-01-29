@@ -16,6 +16,17 @@ public class Driver implements Comparable<Driver>
 
 	public Driver(String firstName, String lastName, int iRating)
 	{
+		if (firstName == null || firstName.isEmpty())
+		{
+			throw new IllegalArgumentException(
+					"First name cannot be null or empty.");
+		}
+		if (lastName == null || firstName.isEmpty())
+		{
+			throw new IllegalArgumentException(
+					"Last name cannot be null or empty.");
+		}
+
 		this.iRating = iRating;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -35,13 +46,23 @@ public class Driver implements Comparable<Driver>
 	{
 		return lastName;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj)
 	{
-		// TODO Look at name
-		// TODO Look at irating
-		return super.equals(obj);
+		if (obj instanceof Driver)
+		{
+			Driver someDriver = (Driver) obj;
+			String otherFirstName = someDriver.getFirstName();
+			String otherLastName = someDriver.getLastName();
+			int otherIRating = someDriver.getiRating();
+			
+			return firstName.equals(otherFirstName)
+					&& lastName.equals(otherLastName)
+					&& iRating == otherIRating;
+		}
+
+		return false;
 	}
 
 	@Override

@@ -41,10 +41,10 @@ public class DriverTest
 		assertFalse(driver.equals(new Driver("Niek", "Versteege", 3624)));
 	}
 
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	public void testEqualsNotDriver()
 	{
-		driver.equals(new MockDriver());
+		assertFalse(driver.equals(new MockDriver()));
 	}
 
 	@Test
@@ -64,9 +64,9 @@ public class DriverTest
 	{
 		assertEquals(1, driver.compareTo(new Driver("asdf", "fdds", 3425)));
 	}
-	
+
 	private class MockDriver
 	{
-		
+
 	}
 }
