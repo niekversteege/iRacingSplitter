@@ -21,12 +21,12 @@ public class SplitBucketTest
 	public void setUp() throws Exception
 	{
 		drivers = new HashSet<Driver>();
-		drivers.add(new Driver("Niek", "Versteege", 4600));
-		drivers.add(new Driver("Roderic", "Kreunen", 3600));
-		drivers.add(new Driver("Paul", "Ilbrink", 5200));
-		drivers.add(new Driver("Andy", "Kirschetorte", 3000));
-		drivers.add(new Driver("Joe", "Junior", 3000));
-		drivers.add(new Driver("Pablo", "Lopez", 4600));
+		drivers.add(new Driver(4600));
+		drivers.add(new Driver(3600));
+		drivers.add(new Driver(5200));
+		drivers.add(new Driver(3000));
+		drivers.add(new Driver(3000));
+		drivers.add(new Driver(4600));
 
 		bucket = new SplitBucket(drivers);
 	}
@@ -62,7 +62,7 @@ public class SplitBucketTest
 	public void testAdd()
 	{
 		int old = bucket.size();
-		bucket.add(new Driver("Test", "tester", 8999));
+		bucket.add(new Driver(8999));
 		assertEquals(old + 1, bucket.size());
 	}
 
@@ -76,8 +76,12 @@ public class SplitBucketTest
 	@Test
 	public void testAddIdentical()
 	{
-		bucket.add(new Driver("Test", "tester", 8999));
-		assertFalse(bucket.add(new Driver("Test", "tester", 8999)));
+		Driver first = new Driver(8999);
+		first.setNames("Test", "tester");
+		bucket.add(first);
+		Driver second = new Driver(8999);
+		second.setNames("Test", "tester");
+		assertFalse(bucket.add(second));
 	}
 
 	@Test

@@ -16,31 +16,54 @@ public class DriverTest
 	@Before
 	public void setUp() throws Exception
 	{
-		driver = new Driver("Niek", "Versteege", 3424);
+		driver = new Driver(3424);
+		driver.setNames("Niek", "Versteege");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testEmptyNames()
 	{
-		driver = new Driver("", "", 2434);
+		driver = new Driver(2434);
+		driver.setNames("Niek", "Versteege");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNullNames()
 	{
-		driver = new Driver(null, null, 2434);
+		driver = new Driver(2434);
+		driver.setNames(null, null);
 	}
 
 	@Test
 	public void testEqualsObject()
 	{
-		assertTrue(driver.equals(new Driver("Niek", "Versteege", 3424)));
+		Driver anotherDriver = new Driver(3424);
+		anotherDriver.setNames("Niek", "Versteege");
+		assertTrue(driver.equals(anotherDriver));
 	}
 
 	@Test
-	public void testEqualsFalse()
+	public void testEqualsFalseIrating()
 	{
-		assertFalse(driver.equals(new Driver("Niek", "Versteege", 3624)));
+		Driver anotherDriver = new Driver(3426);
+		anotherDriver.setNames("Niek", "Versteege");
+		assertFalse(driver.equals(anotherDriver));
+	}
+	
+	@Test
+	public void testEqualsFalseFirstName()
+	{
+		Driver anotherDriver = new Driver(3424);
+		anotherDriver.setNames("asdf", "Versteege");
+		assertFalse(driver.equals(anotherDriver));
+	}
+	
+	@Test
+	public void testEqualsFalseLastName()
+	{
+		Driver anotherDriver = new Driver(3424);
+		anotherDriver.setNames("Niek", "asdf");
+		assertFalse(driver.equals(anotherDriver));
 	}
 
 	@Test
@@ -52,19 +75,25 @@ public class DriverTest
 	@Test
 	public void testCompareTo()
 	{
-		assertEquals(0, driver.compareTo(new Driver("asdf", "fdds", 3424)));
+		Driver anotherDriver = new Driver(3424);
+		anotherDriver.setNames("asdf", "fdds");
+		assertEquals(0, driver.compareTo(anotherDriver));
 	}
 
 	@Test
 	public void testCompareToSmaller()
 	{
-		assertEquals(1, driver.compareTo(new Driver("asdf", "fdds", 3423)));
+		Driver anotherDriver = new Driver(3423);
+		anotherDriver.setNames("asdf", "fdds");
+		assertEquals(1, driver.compareTo(anotherDriver));
 	}
 
 	@Test
 	public void testCompareToBigger()
 	{
-		assertEquals(-1, driver.compareTo(new Driver("asdf", "fdds", 3425)));
+		Driver anotherDriver = new Driver(3425);
+		anotherDriver.setNames("asdf", "fdds");
+		assertEquals(-1, driver.compareTo(anotherDriver));
 	}
 
 	private class MockDriver

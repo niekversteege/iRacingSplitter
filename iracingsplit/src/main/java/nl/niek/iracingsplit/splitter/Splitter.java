@@ -24,7 +24,10 @@ public class Splitter
 	 * Create a splitter with the correct settings.
 	 * 
 	 * @param maxCarsOnTrack
+	 *            Maximum number of drivers that will fit in a split (number of
+	 *            pitstalls).
 	 * @param minDrivers
+	 *            Minimum number of drivers to make the race official.
 	 * @param iratingTreshold
 	 *            The percentage (0-100) of the highest iRating in the split
 	 *            that is allowed.

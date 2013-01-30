@@ -14,22 +14,9 @@ public class Driver implements Comparable<Driver>
 	private String	firstName;
 	private String	lastName;
 
-	public Driver(String firstName, String lastName, int iRating)
+	public Driver(int iRating)
 	{
-		if (firstName == null || firstName.isEmpty())
-		{
-			throw new IllegalArgumentException(
-					"First name cannot be null or empty.");
-		}
-		if (lastName == null || firstName.isEmpty())
-		{
-			throw new IllegalArgumentException(
-					"Last name cannot be null or empty.");
-		}
-
 		this.iRating = iRating;
-		this.firstName = firstName;
-		this.lastName = lastName;
 	}
 
 	public final int getiRating()
@@ -45,6 +32,32 @@ public class Driver implements Comparable<Driver>
 	public final String getLastName()
 	{
 		return lastName;
+	}
+
+	public final void setFirstName(String firstName)
+	{
+		if (firstName == null || firstName.isEmpty())
+		{
+			throw new IllegalArgumentException(
+					"First name cannot be null or empty.");
+		}
+		else
+		{
+			this.firstName = firstName;
+		}
+	}
+
+	public final void setLastName(String lastName)
+	{
+		if (lastName == null || firstName.isEmpty())
+		{
+			throw new IllegalArgumentException(
+					"Last name cannot be null or empty.");
+		}
+		else
+		{
+			this.lastName = lastName;
+		}
 	}
 
 	@Override
@@ -84,5 +97,11 @@ public class Driver implements Comparable<Driver>
 			retVal = 1;
 		}
 		return retVal;
+	}
+
+	public void setNames(String firstName, String lastName)
+	{
+		setFirstName(firstName);
+		setLastName(lastName);
 	}
 }

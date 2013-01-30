@@ -39,8 +39,8 @@ public class DriverFileParserTest
 		List<Driver> result = parser.getAllDrivers();
 
 		assertEquals(2, result.size());
-		assertEquals(new Driver("Niek", "Versteege", 4686), result.get(0));
-		assertEquals(new Driver("Roderic", "Kreunen", 4004), result.get(1));
+		assertEquals(new Driver(4686), result.get(0));
+		assertEquals(new Driver(4004), result.get(1));
 	}
 
 	@Test

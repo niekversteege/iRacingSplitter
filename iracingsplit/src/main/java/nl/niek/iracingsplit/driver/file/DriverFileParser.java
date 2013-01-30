@@ -114,7 +114,9 @@ public class DriverFileParser implements IDriverBuilder
 			String firstName = driverSegments[FIRSTNAME];
 			String lastName = driverSegments[LASTNAME];
 
-			newDriver = new Driver(firstName, lastName, irating);
+			newDriver = new Driver(irating);
+			newDriver.setFirstName(firstName);
+			newDriver.setLastName(lastName);
 		}
 
 		return newDriver;
