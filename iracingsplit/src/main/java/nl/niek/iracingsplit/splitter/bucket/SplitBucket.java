@@ -1,24 +1,24 @@
 package nl.niek.iracingsplit.splitter.bucket;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import nl.niek.iracingsplit.driver.Driver;
 
 /**
  * This class represents a list of drivers in a split. These buckets are created
- * and filled by the splitter class. This class essentially wraps a Set.
+ * and filled by the splitter class.
  * 
  * @author Niek
  * 
  */
 public class SplitBucket
 {
-	private Set<Driver>	drivers;
+	private List<Driver>	drivers;
 
 	public SplitBucket()
 	{
-		drivers = new HashSet<Driver>();
+		drivers = new ArrayList<Driver>();
 	}
 
 	/**
@@ -26,7 +26,7 @@ public class SplitBucket
 	 * 
 	 * @param drivers
 	 */
-	public SplitBucket(Set<Driver> drivers)
+	public SplitBucket(List<Driver> drivers)
 	{
 		this();
 
@@ -45,7 +45,7 @@ public class SplitBucket
 		addAll(drivers);
 	}
 
-	private void addAll(Set<Driver> drivers)
+	private void addAll(List<Driver> drivers)
 	{
 		for (Driver d : drivers)
 		{
@@ -54,7 +54,7 @@ public class SplitBucket
 	}
 
 	/**
-	 * Add a new driver to the bucket. Must be unique. See {@link Set}
+	 * Add a new driver to the bucket. Must be unique.
 	 * 
 	 * @param driver
 	 * 
@@ -65,6 +65,11 @@ public class SplitBucket
 		if (driver == null)
 		{
 			throw new IllegalArgumentException("Driver cannot be null.");
+		}
+
+		if (drivers.contains(driver))
+		{
+			return false;
 		}
 
 		return this.drivers.add(driver);

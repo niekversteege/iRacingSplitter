@@ -3,8 +3,8 @@ package nl.niek.iracingsplit.splitter.bucket;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import nl.niek.iracingsplit.driver.Driver;
 
@@ -13,14 +13,14 @@ import org.junit.Test;
 
 public class SplitBucketTest
 {
-	private SplitBucket	bucket;
+	private SplitBucket		bucket;
 
-	private Set<Driver>	drivers;
+	private List<Driver>	drivers;
 
 	@Before
 	public void setUp() throws Exception
 	{
-		drivers = new HashSet<Driver>();
+		drivers = new ArrayList<Driver>();
 		drivers.add(new Driver(4600));
 		drivers.add(new Driver(3600));
 		drivers.add(new Driver(5200));
@@ -46,13 +46,13 @@ public class SplitBucketTest
 	@Test(expected = IllegalArgumentException.class)
 	public void testSplitBucketEmpty()
 	{
-		bucket = new SplitBucket(new HashSet<Driver>());
+		bucket = new SplitBucket(new ArrayList<Driver>());
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testSplitBucketNullElement()
 	{
-		drivers = new HashSet<Driver>();
+		drivers = new ArrayList<Driver>();
 		Driver d = null;
 		drivers.add(d);
 		bucket = new SplitBucket(drivers);
@@ -80,11 +80,11 @@ public class SplitBucketTest
 		first.setNames("Test", "tester");
 		int beforeSize = bucket.size();
 		bucket.add(first);
-		
+
 		Driver second = new Driver(8999);
 		second.setNames("Test", "tester");
 		assertFalse(bucket.add(second));
-		
+
 		assertEquals(beforeSize, bucket.size());
 	}
 

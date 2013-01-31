@@ -4,8 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import nl.niek.iracingsplit.driver.Driver;
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -49,7 +47,7 @@ public class DriverTest
 		anotherDriver.setNames("Niek", "Versteege");
 		assertFalse(driver.equals(anotherDriver));
 	}
-	
+
 	@Test
 	public void testEqualsFalseFirstName()
 	{
@@ -57,7 +55,7 @@ public class DriverTest
 		anotherDriver.setNames("asdf", "Versteege");
 		assertFalse(driver.equals(anotherDriver));
 	}
-	
+
 	@Test
 	public void testEqualsFalseLastName()
 	{
