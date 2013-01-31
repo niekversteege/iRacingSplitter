@@ -142,7 +142,7 @@ public class DriverFileParser implements IDriverBuilder
 	}
 
 	@Override
-	public Set<Driver> getDrivers()
+	public List<Driver> getDrivers()
 	{
 		// TODO Auto-generated method stub
 		return null;

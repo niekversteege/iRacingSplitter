@@ -27,7 +27,7 @@ public class SplitterTest
 	{
 		List<Driver> drivers = getDefaultDriverList();
 
-		builder = new MockDriverBuilder(new HashSet<Driver>(drivers));
+		builder = new MockDriverBuilder(drivers);
 
 		splitter = new Splitter(MAX_CARS_ON_TRACK, MIN_DRIVERS,
 				IRATING_TRESHOLD);
@@ -63,7 +63,7 @@ public class SplitterTest
 	{
 		List<Driver> drivers = getDefaultDriverList();
 		drivers.remove(31);
-		builder = new MockDriverBuilder(new HashSet<Driver>(drivers));
+		builder = new MockDriverBuilder(drivers);
 		List<SplitBucket> splits = splitter.split(builder);
 		assertEquals(2, splits.size());
 	}
@@ -78,7 +78,7 @@ public class SplitterTest
 		drivers.remove(2);
 		drivers.remove(3);
 
-		builder = new MockDriverBuilder(new HashSet<Driver>(drivers));
+		builder = new MockDriverBuilder(drivers);
 		List<SplitBucket> splits = splitter.split(builder);
 		assertEquals(3, splits.size());
 	}
@@ -92,7 +92,7 @@ public class SplitterTest
 		drivers.remove(1);
 		drivers.remove(2);
 
-		builder = new MockDriverBuilder(new HashSet<Driver>(drivers));
+		builder = new MockDriverBuilder(drivers);
 		List<SplitBucket> splits = splitter.split(builder);
 		assertEquals(4, splits.size());
 	}
@@ -119,15 +119,15 @@ public class SplitterTest
 	 */
 	private class MockDriverBuilder implements IDriverBuilder
 	{
-		private Set<Driver>	drivers;
+		private List<Driver>	drivers;
 
-		MockDriverBuilder(Set<Driver> drivers)
+		MockDriverBuilder(List<Driver> drivers)
 		{
 			this.drivers = drivers;
 		}
 
 		@Override
-		public Set<Driver> getDrivers()
+		public List<Driver> getDrivers()
 		{
 			return drivers;
 		}
@@ -142,7 +142,7 @@ public class SplitterTest
 	private class MockDriverNullBuilder implements IDriverBuilder
 	{
 		@Override
-		public Set<Driver> getDrivers()
+		public List<Driver> getDrivers()
 		{
 			return null;
 		}

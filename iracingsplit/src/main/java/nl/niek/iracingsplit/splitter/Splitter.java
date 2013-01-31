@@ -3,6 +3,7 @@ package nl.niek.iracingsplit.splitter;
 import java.util.ArrayList;
 import java.util.List;
 
+import nl.niek.iracingsplit.driver.Driver;
 import nl.niek.iracingsplit.driver.IDriverBuilder;
 import nl.niek.iracingsplit.splitter.bucket.SplitBucket;
 
@@ -53,6 +54,7 @@ public class Splitter
 	public List<SplitBucket> split(IDriverBuilder builder)
 	{
 		List<SplitBucket> buckets = new ArrayList<SplitBucket>();
+		List<Driver> drivers = builder.getDrivers();
 
 		return buckets;
 	}

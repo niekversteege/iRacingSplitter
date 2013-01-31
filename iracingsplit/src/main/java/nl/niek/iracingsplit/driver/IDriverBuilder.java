@@ -1,5 +1,6 @@
 package nl.niek.iracingsplit.driver;
 
+import java.util.List;
 import java.util.Set;
 
 
@@ -12,5 +13,5 @@ public interface IDriverBuilder
 	 * @return All the drivers parsed from whatever source: dependent on the
 	 *         implementation.
 	 */
-	Set<Driver> getDrivers();
+	List<Driver> getDrivers();
 }
