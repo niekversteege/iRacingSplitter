@@ -24,7 +24,7 @@ public class DriverTest
 	public void testEmptyNames()
 	{
 		driver = new Driver(2434);
-		driver.setNames("Niek", "Versteege");
+		driver.setNames("", "");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
