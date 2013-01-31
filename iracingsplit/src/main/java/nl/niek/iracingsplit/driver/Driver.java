@@ -70,9 +70,17 @@ public class Driver implements Comparable<Driver>
 			String otherLastName = someDriver.getLastName();
 			int otherIRating = someDriver.getiRating();
 
-			return firstName.equals(otherFirstName)
-					&& lastName.equals(otherLastName)
-					&& iRating == otherIRating;
+			boolean equal = false;
+
+			if (firstName != null && otherFirstName != null && lastName != null
+					&& otherLastName != null)
+			{
+				equal = firstName.equals(otherFirstName)
+						&& lastName.equals(otherLastName)
+						&& iRating == otherIRating;
+			}
+
+			return equal;
 		}
 
 		return false;

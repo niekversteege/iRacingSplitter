@@ -30,19 +30,23 @@ public class SplitBucket
 	{
 		this();
 
-		if (drivers == null)
+		if (drivers != null)
+		{
+			if (drivers.isEmpty())
+			{
+				throw new IllegalArgumentException(
+						"List of drivers cannot be empty.");
+			}
+			else
+			{
+				addAll(drivers);
+			}
+		}
+		else
 		{
 			throw new IllegalArgumentException(
 					"List of drivers cannot be null.");
 		}
-
-		if (drivers.isEmpty())
-		{
-			throw new IllegalArgumentException(
-					"List of drivers cannot be empty.");
-		}
-
-		addAll(drivers);
 	}
 
 	private void addAll(List<Driver> drivers)
@@ -62,17 +66,19 @@ public class SplitBucket
 	 */
 	public boolean add(final Driver driver)
 	{
-		if (driver == null)
+		if (driver != null)
 		{
-			throw new IllegalArgumentException("Driver cannot be null.");
+			boolean success = false;
+
+			if (!drivers.contains(driver))
+			{
+				success = drivers.add(driver);
+			}
+
+			return success;
 		}
 
-		if (!drivers.contains(driver))
-		{
-			return drivers.add(driver);
-		}
-
-		return false;
+		throw new IllegalArgumentException("Driver cannot be null.");
 	}
 
 	/**
