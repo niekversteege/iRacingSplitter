@@ -1,7 +1,6 @@
 package nl.niek.iracingsplit.splitter;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -132,7 +131,6 @@ public class SplitterTest
 		{
 			return drivers;
 		}
-
 	}
 
 	/**
@@ -148,7 +146,6 @@ public class SplitterTest
 		{
 			return null;
 		}
-
 	}
 
 	/**
