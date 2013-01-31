@@ -67,12 +67,12 @@ public class SplitBucket
 			throw new IllegalArgumentException("Driver cannot be null.");
 		}
 
-		if (drivers.contains(driver))
+		if (!drivers.contains(driver))
 		{
-			return false;
+			return drivers.add(driver);
 		}
 
-		return this.drivers.add(driver);
+		return false;
 	}
 
 	/**

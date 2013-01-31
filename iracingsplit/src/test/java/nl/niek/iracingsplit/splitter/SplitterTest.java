@@ -3,9 +3,7 @@ package nl.niek.iracingsplit.splitter;
 import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import nl.niek.iracingsplit.driver.Driver;
 import nl.niek.iracingsplit.driver.IDriverBuilder;
