@@ -3,9 +3,9 @@ package nl.niek.iracingsplit.splitter.bucket;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 import nl.niek.iracingsplit.driver.Driver;
+
+import org.apache.log4j.Logger;
 
 /**
  * This class represents a list of drivers in a split. These buckets are created
@@ -16,8 +16,8 @@ import nl.niek.iracingsplit.driver.Driver;
  */
 public class SplitBucket
 {
-	private final Logger log = Logger.getLogger(getClass());
-	
+	private final Logger	log	= Logger.getLogger(getClass());
+
 	private List<Driver>	drivers;
 
 	public SplitBucket()
@@ -36,21 +36,17 @@ public class SplitBucket
 
 		if (drivers != null)
 		{
-			if (drivers.isEmpty())
-			{
-				throw new IllegalArgumentException(
-						"List of drivers cannot be empty.");
-			}
-			else
+			if (!drivers.isEmpty())
 			{
 				addAll(drivers);
 			}
-		}
-		else
-		{
+
 			throw new IllegalArgumentException(
-					"List of drivers cannot be null.");
+					"List of drivers cannot be empty.");
 		}
+
+		throw new IllegalArgumentException("List of drivers cannot be null.");
+
 	}
 
 	private void addAll(List<Driver> drivers)
@@ -76,9 +72,10 @@ public class SplitBucket
 			{
 				return drivers.add(driver);
 			}
-			
-			log.warn("Duplicate driver found when trying to add to bucket:\n\t" + driver);
-			
+
+			log.warn("Duplicate driver found when trying to add to bucket:\n\t"
+					+ driver);
+
 			return false;
 		}
 
@@ -93,6 +90,7 @@ public class SplitBucket
 	public final int avgIrating()
 	{
 		int avgIrating = 0;
+
 		if (!drivers.isEmpty())
 		{
 			int total = 0;
@@ -104,6 +102,7 @@ public class SplitBucket
 
 			avgIrating = total / drivers.size();
 		}
+
 		return avgIrating;
 	}
 

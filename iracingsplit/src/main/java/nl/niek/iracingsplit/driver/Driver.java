@@ -102,6 +102,7 @@ public class Driver implements Comparable<Driver>
 		{
 			retVal = 1;
 		}
+		
 		return retVal;
 	}
 	
