@@ -63,14 +63,14 @@ public class Driver implements Comparable<Driver>
 	@Override
 	public boolean equals(Object obj)
 	{
+		boolean equal = false;
+		
 		if (obj instanceof Driver)
 		{
 			Driver someDriver = (Driver) obj;
 			String otherFirstName = someDriver.getFirstName();
 			String otherLastName = someDriver.getLastName();
 			int otherIRating = someDriver.getiRating();
-
-			boolean equal = false;
 
 			if (firstName != null && otherFirstName != null && lastName != null
 					&& otherLastName != null)
@@ -79,11 +79,9 @@ public class Driver implements Comparable<Driver>
 						&& lastName.equals(otherLastName)
 						&& iRating == otherIRating;
 			}
-
-			return equal;
 		}
 
-		return false;
+		return equal;
 	}
 
 	@Override
@@ -105,6 +103,12 @@ public class Driver implements Comparable<Driver>
 			retVal = 1;
 		}
 		return retVal;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return firstName + "." + lastName + "." + iRating;
 	}
 
 	public void setNames(String firstName, String lastName)

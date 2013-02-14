@@ -78,8 +78,8 @@ public class SplitBucketTest
 	{
 		Driver first = new Driver(8999);
 		first.setNames("Test", "tester");
-		int beforeSize = bucket.size();
 		bucket.add(first);
+		int beforeSize = bucket.size();
 
 		Driver second = new Driver(8999);
 		second.setNames("Test", "tester");

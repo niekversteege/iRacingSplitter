@@ -3,6 +3,8 @@ package nl.niek.iracingsplit.splitter.bucket;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import nl.niek.iracingsplit.driver.Driver;
 
 /**
@@ -14,6 +16,8 @@ import nl.niek.iracingsplit.driver.Driver;
  */
 public class SplitBucket
 {
+	private final Logger log = Logger.getLogger(getClass());
+	
 	private List<Driver>	drivers;
 
 	public SplitBucket()
@@ -68,14 +72,14 @@ public class SplitBucket
 	{
 		if (driver != null)
 		{
-			boolean success = false;
-
 			if (!drivers.contains(driver))
 			{
-				success = drivers.add(driver);
+				return drivers.add(driver);
 			}
-
-			return success;
+			
+			log.warn("Duplicate driver found when trying to add to bucket:\n\t" + driver);
+			
+			return false;
 		}
 
 		throw new IllegalArgumentException("Driver cannot be null.");
