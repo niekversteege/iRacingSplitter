@@ -1,6 +1,14 @@
 package nl.niek.iracingsplit.splitter;
 
-public class SplitterArgValidator
+/**
+ * Utility class to check if arguments for the splitter class make sense. All
+ * these validation methods throw an {@link IllegalArgumentException} when they
+ * do not validate.
+ * 
+ * @author Niek
+ * 
+ */
+class SplitterArgValidator
 {
 	private static final int	MAX_IRATING_TRESHOLD	= 100;
 
@@ -8,6 +16,14 @@ public class SplitterArgValidator
 
 	private static final int	MAX_MIN_DRIVERS			= 10;
 
+	/**
+	 * Validate the arguments. Throws an IllegalArgumentException when invalid
+	 * input is found.
+	 * 
+	 * @param maxCarsOnTrack
+	 * @param minDrivers
+	 * @param iratingTreshold
+	 */
 	public static void validateArgs(int maxCarsOnTrack, int minDrivers,
 			int iratingTreshold)
 	{
