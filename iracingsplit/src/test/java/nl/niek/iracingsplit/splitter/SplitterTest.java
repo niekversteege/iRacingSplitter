@@ -34,7 +34,7 @@ public class SplitterTest
 	@Test(expected = IllegalArgumentException.class)
 	public void testTresholdTooBig()
 	{
-		splitter = new Splitter(MAX_CARS_ON_TRACK, MIN_DRIVERS, 110);
+		splitter = new Splitter(MAX_CARS_ON_TRACK, MIN_DRIVERS, 101);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

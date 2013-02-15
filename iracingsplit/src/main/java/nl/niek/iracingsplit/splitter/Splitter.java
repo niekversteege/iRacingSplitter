@@ -30,12 +30,15 @@ public class Splitter
 	 * @param minDrivers
 	 *            Minimum number of drivers to make the race official.
 	 * @param iratingTreshold
-	 *            The percentage (0-100) of the highest iRating in the split
-	 *            that is allowed.
+	 *            The percentage (0-100) of iRating difference allowed in a
+	 *            split. Set 0 if you don't wish to use it.
 	 */
 	public Splitter(final int maxCarsOnTrack, final int minDrivers,
 			final int iratingTreshold)
 	{
+		SplitterArgValidator.validateArgs(maxCarsOnTrack, minDrivers,
+				iratingTreshold);
+
 		this.maxCarsOnTrack = maxCarsOnTrack;
 		this.minDrivers = minDrivers;
 		this.iratingTreshold = iratingTreshold;
