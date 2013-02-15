@@ -8,16 +8,29 @@ import nl.niek.iracingsplit.driver.IDriverBuilder;
 
 import org.apache.log4j.Logger;
 
+/**
+ * Parse an iRacing result CSV file into drivers.
+ * 
+ * @author Niek
+ * 
+ */
 public class CSVDriverBuilder implements IDriverBuilder
 {
-	private final Logger log = Logger.getLogger(getClass());
-	
-	public CSVDriverBuilder(File file)
+	private final Logger	log	= Logger.getLogger(getClass());
+
+	public CSVDriverBuilder(File csvFile)
 	{
 		log.info("Attempting to build drivers from file:");
-		log.info(file.getAbsolutePath());
+		log.info(csvFile.getAbsolutePath());
+
 	}
-	
+
+	public CSVDriverBuilder(List<File> csvFiles)
+	{
+		log.info("Attempting to build drivers from " + csvFiles.size()
+				+ " files.");
+	}
+
 	@Override
 	public List<Driver> getDrivers()
 	{
