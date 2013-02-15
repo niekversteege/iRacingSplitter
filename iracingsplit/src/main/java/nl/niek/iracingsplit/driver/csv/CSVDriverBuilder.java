@@ -16,7 +16,15 @@ import org.apache.log4j.Logger;
  */
 public class CSVDriverBuilder implements IDriverBuilder
 {
-	private final Logger	log	= Logger.getLogger(getClass());
+	private final Logger			log					= Logger.getLogger(getClass());
+
+	private static final String[]	IRACING_CSV_HEADER	= { "Fin Pos",
+			"Car ID", "Car", "Car Class ID", "Car Class", "Custid", "Driver",
+			"Start Pos", "Car #", "Out ID", "Out", "Interval", "Laps Led",
+			"Average Lap Time", "Fastest Lap Time", "Fast Lap#", "Laps Comp",
+			"Inc", "Pts", "Club Pts", "Div", "Club ID", "Club", "Old iRating",
+			"New iRating", "Old License Level", "Old License Sub-Level",
+			"New License Level", "New License Sub-Level", "Series Name" };
 
 	public CSVDriverBuilder(File csvFile)
 	{
