@@ -13,13 +13,13 @@ import org.junit.Test;
 
 public class CSVDriverBuilderTest
 {
-	private static final String	RESULTFILE1	= "src/test/resources/eventresult_7490894.csv";
-	private static final String	RESULTFILE2	= "src/test/resources/eventresult_7490895.csv";
-	private static final String	RESULTFILE3	= "src/test/resources/eventresult_7490896.csv";
-	
-	private static final String	TEXTFILE	= "/src/test/resources/notacsv.txt";
+	private static final String	RESULTFILE1		= "src/test/resources/eventresult_7490894.csv";
+	private static final String	RESULTFILE2		= "src/test/resources/eventresult_7490895.csv";
+	private static final String	RESULTFILE3		= "src/test/resources/eventresult_7490896.csv";
+
+	private static final String	TEXTFILE		= "/src/test/resources/notacsv.txt";
 	private static final String	TOOLARGEFILE	= "/src/test/resources/toolargefile";
-	
+
 	private CSVDriverBuilder	builder;
 
 	@Before
@@ -35,21 +35,33 @@ public class CSVDriverBuilderTest
 
 		assertEquals(31, drivers.size());
 	}
-	
+
 	@Test
 	public void testCSVDriverBuilderList()
 	{
 		List<File> files = new ArrayList<>();
-		
+
 		files.add(new File(RESULTFILE1));
 		files.add(new File(RESULTFILE2));
 		files.add(new File(RESULTFILE3));
-		
+
 		builder = new CSVDriverBuilder(files);
-		
+
 		List<Driver> drivers = builder.getDrivers();
 
 		assertEquals(92, drivers.size());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testCSVDriverBuilderListNotCSV()
+	{
+		List<File> files = new ArrayList<>();
+
+		files.add(new File(RESULTFILE1));
+		files.add(new File(TEXTFILE));
+		files.add(new File(RESULTFILE3));
+
+		builder = new CSVDriverBuilder(files);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
