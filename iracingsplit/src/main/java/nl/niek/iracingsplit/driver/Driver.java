@@ -11,8 +11,7 @@ public class Driver implements Comparable<Driver>
 {
 
 	private int		iRating;
-	private String	firstName;
-	private String	lastName;
+	private String	name;
 
 	public Driver(int iRating)
 	{
@@ -24,39 +23,20 @@ public class Driver implements Comparable<Driver>
 		return iRating;
 	}
 
-	public final String getFirstName()
+	public final String getName()
 	{
-		return firstName;
+		return name;
 	}
 
-	public final String getLastName()
+	public final void setName(String name)
 	{
-		return lastName;
-	}
-
-	public final void setFirstName(String firstName)
-	{
-		if (firstName == null || firstName.isEmpty())
+		if (name == null || name.isEmpty())
 		{
-			throw new IllegalArgumentException(
-					"First name cannot be null or empty.");
+			throw new IllegalArgumentException("Name cannot be null or empty.");
 		}
 		else
 		{
-			this.firstName = firstName;
-		}
-	}
-
-	public final void setLastName(String lastName)
-	{
-		if (lastName == null || firstName.isEmpty())
-		{
-			throw new IllegalArgumentException(
-					"Last name cannot be null or empty.");
-		}
-		else
-		{
-			this.lastName = lastName;
+			this.name = name;
 		}
 	}
 
@@ -64,20 +44,16 @@ public class Driver implements Comparable<Driver>
 	public boolean equals(Object obj)
 	{
 		boolean equal = false;
-		
+
 		if (obj instanceof Driver)
 		{
 			Driver someDriver = (Driver) obj;
-			String otherFirstName = someDriver.getFirstName();
-			String otherLastName = someDriver.getLastName();
+			String otherNAme = someDriver.getName();
 			int otherIRating = someDriver.getiRating();
 
-			if (firstName != null && otherFirstName != null && lastName != null
-					&& otherLastName != null)
+			if (name != null && otherNAme != null)
 			{
-				equal = firstName.equals(otherFirstName)
-						&& lastName.equals(otherLastName)
-						&& iRating == otherIRating;
+				equal = name.equals(otherNAme) && iRating == otherIRating;
 			}
 		}
 
@@ -102,19 +78,13 @@ public class Driver implements Comparable<Driver>
 		{
 			retVal = 1;
 		}
-		
+
 		return retVal;
 	}
-	
+
 	@Override
 	public String toString()
 	{
-		return firstName + "." + lastName + "." + iRating;
-	}
-
-	public void setNames(String firstName, String lastName)
-	{
-		setFirstName(firstName);
-		setLastName(lastName);
+		return name + "." + iRating;
 	}
 }

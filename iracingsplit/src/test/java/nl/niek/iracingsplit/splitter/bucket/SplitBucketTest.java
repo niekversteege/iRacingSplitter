@@ -77,12 +77,12 @@ public class SplitBucketTest
 	public void testAddIdentical()
 	{
 		Driver first = new Driver(8999);
-		first.setNames("Test", "tester");
+		first.setName("Test tester");
 		bucket.add(first);
 		int beforeSize = bucket.size();
 
 		Driver second = new Driver(8999);
-		second.setNames("Test", "tester");
+		second.setName("Test tester");
 		assertFalse(bucket.add(second));
 
 		assertEquals(beforeSize, bucket.size());
