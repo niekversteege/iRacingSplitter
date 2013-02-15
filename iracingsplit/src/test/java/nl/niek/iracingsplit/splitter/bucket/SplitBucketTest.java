@@ -95,7 +95,7 @@ public class SplitBucketTest
 
 		for (Driver d : drivers)
 		{
-			total += d.getiRating();
+			total += d.getIrating();
 		}
 
 		int expected = total / drivers.size();

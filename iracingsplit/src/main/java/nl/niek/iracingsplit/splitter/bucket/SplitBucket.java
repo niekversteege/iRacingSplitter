@@ -99,7 +99,7 @@ public class SplitBucket
 
 			for (Driver d : drivers)
 			{
-				total += d.getiRating();
+				total += d.getIrating();
 			}
 
 			avgIrating = total / drivers.size();

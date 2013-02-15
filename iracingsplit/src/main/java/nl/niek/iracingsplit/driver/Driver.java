@@ -10,22 +10,32 @@ package nl.niek.iracingsplit.driver;
 public class Driver implements Comparable<Driver>
 {
 
-	private int		iRating;
+	private int		irating;
 	private String	name;
+
+	public Driver()
+	{
+
+	}
 
 	public Driver(int iRating)
 	{
-		this.iRating = iRating;
-	}
-
-	public final int getiRating()
-	{
-		return iRating;
+		this.irating = iRating;
 	}
 
 	public final String getName()
 	{
 		return name;
+	}	
+
+	public final int getIrating()
+	{
+		return irating;
+	}
+
+	public final void setIrating(int irating)
+	{
+		this.irating = irating;
 	}
 
 	public final void setName(String name)
@@ -49,11 +59,11 @@ public class Driver implements Comparable<Driver>
 		{
 			Driver someDriver = (Driver) obj;
 			String otherNAme = someDriver.getName();
-			int otherIRating = someDriver.getiRating();
+			int otherIRating = someDriver.getIrating();
 
 			if (name != null && otherNAme != null)
 			{
-				equal = name.equals(otherNAme) && iRating == otherIRating;
+				equal = name.equals(otherNAme) && irating == otherIRating;
 			}
 		}
 
@@ -63,18 +73,18 @@ public class Driver implements Comparable<Driver>
 	@Override
 	public int compareTo(Driver o)
 	{
-		int otherIrating = o.getiRating();
+		int otherIrating = o.getIrating();
 		int retVal = 0;
 
-		if (iRating == otherIrating)
+		if (irating == otherIrating)
 		{
 			retVal = 0;
 		}
-		else if (iRating < otherIrating)
+		else if (irating < otherIrating)
 		{
 			retVal = -1;
 		}
-		else if (iRating > otherIrating)
+		else if (irating > otherIrating)
 		{
 			retVal = 1;
 		}
@@ -85,6 +95,6 @@ public class Driver implements Comparable<Driver>
 	@Override
 	public String toString()
 	{
-		return name + "." + iRating;
+		return name + "." + irating;
 	}
 }

@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import nl.niek.iracingsplit.driver.Driver;
 import nl.niek.iracingsplit.driver.IDriverBuilder;
@@ -16,6 +18,8 @@ import nl.niek.iracingsplit.util.FileUtil;
 import org.apache.log4j.Logger;
 
 import au.com.bytecode.opencsv.CSVReader;
+import au.com.bytecode.opencsv.bean.CsvToBean;
+import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
 
 /**
  * Parse an iRacing result CSV file into drivers.
@@ -25,20 +29,28 @@ import au.com.bytecode.opencsv.CSVReader;
  */
 public class CSVDriverBuilder implements IDriverBuilder
 {
-	private final Logger			log					= Logger.getLogger(getClass());
+	private static final String	IRACING_HEADER_OLDIRATING	= "Old iRating";
 
-	private List<File>				csvFiles;
+	private static final String	IRACING_HEADER_DRIVERNAME	= "Driver";
 
-	private static final String[]	IRACING_CSV_HEADER	= { "Fin Pos",
-			"Car ID", "Car", "Car Class ID", "Car Class", "Custid", "Driver",
-			"Start Pos", "Car #", "Out ID", "Out", "Interval", "Laps Led",
-			"Average Lap Time", "Fastest Lap Time", "Fast Lap#", "Laps Comp",
-			"Inc", "Pts", "Club Pts", "Div", "Club ID", "Club", "Old iRating",
-			"New iRating", "Old License Level", "Old License Sub-Level",
-			"New License Level", "New License Sub-Level", "Series Name" };
+	private final Logger		log							= Logger.getLogger(getClass());
+
+	private List<File>			csvFiles;
+
+	private Map<String, String>	columnMapping;
+
+	private CSVDriverBuilder()
+	{
+		columnMapping = new HashMap<String, String>();
+
+		columnMapping.put(IRACING_HEADER_DRIVERNAME, "name");
+		columnMapping.put(IRACING_HEADER_OLDIRATING, "iRating");
+	}
 
 	public CSVDriverBuilder(File csvFile)
 	{
+		this();
+
 		log.info("Constructing CSVDriverBuilder for file:");
 		log.info(csvFile.getAbsolutePath());
 
@@ -47,6 +59,8 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 	public CSVDriverBuilder(List<File> csvFiles)
 	{
+		this();
+
 		log.info("Constructing CSVDriverBuilder for " + csvFiles.size()
 				+ " files.");
 
@@ -87,51 +101,47 @@ public class CSVDriverBuilder implements IDriverBuilder
 	@Override
 	public List<Driver> getDrivers()
 	{
-		List<Driver> drivers = null;
+		List<Driver> drivers = new ArrayList<>();
 
-		for (File file : csvFiles)
+		for (File csv : csvFiles)
 		{
-			InputStream in = null;
-			CSVReader reader = null;
+			CsvToBean<Driver> bean = new CsvToBean<>();
+
+			HeaderColumnNameTranslateMappingStrategy<Driver> strategy = new HeaderColumnNameTranslateMappingStrategy<Driver>();
+			strategy.setType(Driver.class);
+			strategy.setColumnMapping(columnMapping);
+
+			CSVReader reader = buildCsvReader(csv);
+			log.info("Parsing Drivers...");
+			List<Driver> parse = bean.parse(strategy, reader);
+			log.info("Parsed " + parse.size() + " drivers.");
+			drivers.addAll(parse);
+
 			try
 			{
-				in = new FileInputStream(file);
-
-				reader = new CSVReader(new InputStreamReader(in));
-
-				log.info("Reading file: " + file.getAbsolutePath());
-
-				List<String[]> rowsAsTokens = reader.readAll();
-				
-				for (String[] asd : rowsAsTokens)
-				{
-					StringBuffer buf = new StringBuffer();
-					for (String s : asd)
-					{
-						buf.append(s + ", ");
-					}
-					
-					log.info(buf.toString());
-				}
+				reader.close();
 			}
 			catch (IOException e)
 			{
 				log.error(e.getMessage(), e);
 			}
-			finally
-			{
-				try
-				{
-					reader.close();
-				}
-				catch (IOException e)
-				{
-					log.error(e.getMessage(), e);
-				}
-			}
+		}
+		return drivers;
+	}
 
+	private CSVReader buildCsvReader(File csv)
+	{
+		InputStream input = null;
+		try
+		{
+			input = new FileInputStream(csv);
+		}
+		catch (FileNotFoundException e)
+		{
+			log.error(e.getMessage(), e);
 		}
 
-		return drivers;
+		InputStreamReader reader = new InputStreamReader(input);
+		return new CSVReader(reader);
 	}
 }
