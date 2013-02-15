@@ -1,6 +1,11 @@
 package nl.niek.iracingsplit.driver.csv;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +14,8 @@ import nl.niek.iracingsplit.driver.IDriverBuilder;
 import nl.niek.iracingsplit.util.FileUtil;
 
 import org.apache.log4j.Logger;
+
+import au.com.bytecode.opencsv.CSVReader;
 
 /**
  * Parse an iRacing result CSV file into drivers.
@@ -32,7 +39,7 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 	public CSVDriverBuilder(File csvFile)
 	{
-		log.info("Attempting to build drivers from file:");
+		log.info("Constructing CSVDriverBuilder for file:");
 		log.info(csvFile.getAbsolutePath());
 
 		validateFiles(csvFile);
@@ -40,10 +47,12 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 	public CSVDriverBuilder(List<File> csvFiles)
 	{
-		log.info("Attempting to build drivers from " + csvFiles.size()
+		log.info("Constructing CSVDriverBuilder for " + csvFiles.size()
 				+ " files.");
 
 		validateFiles(csvFiles);
+
+		this.csvFiles = csvFiles;
 	}
 
 	private void validateFiles(File csvFile)
@@ -78,7 +87,51 @@ public class CSVDriverBuilder implements IDriverBuilder
 	@Override
 	public List<Driver> getDrivers()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		List<Driver> drivers = null;
+
+		for (File file : csvFiles)
+		{
+			InputStream in = null;
+			CSVReader reader = null;
+			try
+			{
+				in = new FileInputStream(file);
+
+				reader = new CSVReader(new InputStreamReader(in));
+
+				log.info("Reading file: " + file.getAbsolutePath());
+
+				List<String[]> rowsAsTokens = reader.readAll();
+				
+				for (String[] asd : rowsAsTokens)
+				{
+					StringBuffer buf = new StringBuffer();
+					for (String s : asd)
+					{
+						buf.append(s + ", ");
+					}
+					
+					log.info(buf.toString());
+				}
+			}
+			catch (IOException e)
+			{
+				log.error(e.getMessage(), e);
+			}
+			finally
+			{
+				try
+				{
+					reader.close();
+				}
+				catch (IOException e)
+				{
+					log.error(e.getMessage(), e);
+				}
+			}
+
+		}
+
+		return drivers;
 	}
 }
