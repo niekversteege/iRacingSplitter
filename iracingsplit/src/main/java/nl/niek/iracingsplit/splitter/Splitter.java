@@ -57,8 +57,14 @@ public class Splitter
 	public List<SplitBucket> split(IDriverBuilder builder)
 	{
 		List<SplitBucket> buckets = new ArrayList<SplitBucket>();
-		List<Driver> drivers = builder.getDrivers();
 
-		return buckets;
+		if (builder != null)
+		{
+			List<Driver> drivers = builder.getDrivers();
+
+			return buckets;
+		}
+
+		throw new IllegalArgumentException("IDriverbuilder is null.");
 	}
 }

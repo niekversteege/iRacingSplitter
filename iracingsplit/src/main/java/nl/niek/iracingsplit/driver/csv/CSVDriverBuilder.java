@@ -45,6 +45,8 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 		columnMapping.put(IRACING_HEADER_DRIVERNAME, "name");
 		columnMapping.put(IRACING_HEADER_OLDIRATING, "iRating");
+		
+		csvFiles = new ArrayList<File>();
 	}
 
 	public CSVDriverBuilder(File csvFile)
@@ -65,8 +67,6 @@ public class CSVDriverBuilder implements IDriverBuilder
 				+ " files.");
 
 		validateFiles(csvFiles);
-
-		this.csvFiles = csvFiles;
 	}
 
 	private void validateFiles(File csvFile)
@@ -96,6 +96,8 @@ public class CSVDriverBuilder implements IDriverBuilder
 						"List of files contains non-csv file.");
 			}
 		}
+		
+		this.csvFiles.addAll(csvFiles);
 	}
 
 	@Override
