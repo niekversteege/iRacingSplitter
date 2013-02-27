@@ -17,10 +17,6 @@ import nl.niek.iracingsplit.util.FileUtil;
 
 import org.apache.log4j.Logger;
 
-import au.com.bytecode.opencsv.CSVReader;
-import au.com.bytecode.opencsv.bean.CsvToBean;
-import au.com.bytecode.opencsv.bean.HeaderColumnNameTranslateMappingStrategy;
-
 /**
  * Parse an iRacing result CSV file into drivers.
  * 
@@ -107,43 +103,9 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 		for (File csv : csvFiles)
 		{
-			CsvToBean<Driver> bean = new CsvToBean<>();
-
-			HeaderColumnNameTranslateMappingStrategy<Driver> strategy = new HeaderColumnNameTranslateMappingStrategy<Driver>();
-			strategy.setType(Driver.class);
-			strategy.setColumnMapping(columnMapping);
-
-			CSVReader reader = buildCsvReader(csv);
-			log.info("Parsing Drivers...");
-			List<Driver> parse = bean.parse(strategy, reader);
-			log.info("Parsed " + parse.size() + " drivers.");
-			drivers.addAll(parse);
-
-			try
-			{
-				reader.close();
-			}
-			catch (IOException e)
-			{
-				log.error(e.getMessage(), e);
-			}
+			
 		}
+		
 		return drivers;
-	}
-
-	private CSVReader buildCsvReader(File csv)
-	{
-		InputStream input = null;
-		try
-		{
-			input = new FileInputStream(csv);
-		}
-		catch (FileNotFoundException e)
-		{
-			log.error(e.getMessage(), e);
-		}
-
-		InputStreamReader reader = new InputStreamReader(input);
-		return new CSVReader(reader);
 	}
 }
