@@ -21,12 +21,12 @@ public class SplitBucketTest
 	public void setUp() throws Exception
 	{
 		drivers = new ArrayList<Driver>();
-		drivers.add(new Driver(4600));
-		drivers.add(new Driver(3600));
-		drivers.add(new Driver(5200));
-		drivers.add(new Driver(3000));
-		drivers.add(new Driver(3000));
-		drivers.add(new Driver(4600));
+		drivers.add(new Driver(4600, ""));
+		drivers.add(new Driver(3600, ""));
+		drivers.add(new Driver(5200, ""));
+		drivers.add(new Driver(3000, ""));
+		drivers.add(new Driver(3200, ""));
+		drivers.add(new Driver(4400, ""));
 
 		bucket = new SplitBucket(drivers);
 	}
@@ -62,7 +62,7 @@ public class SplitBucketTest
 	public void testAdd()
 	{
 		int old = bucket.size();
-		bucket.add(new Driver(8999));
+		bucket.add(new Driver(8999, ""));
 		assertEquals(old + 1, bucket.size());
 	}
 
@@ -76,12 +76,12 @@ public class SplitBucketTest
 	@Test
 	public void testAddIdentical()
 	{
-		Driver first = new Driver(8999);
+		Driver first = new Driver(8999, "");
 		first.setName("Test tester");
 		bucket.add(first);
 		int beforeSize = bucket.size();
 
-		Driver second = new Driver(8999);
+		Driver second = new Driver(8999, "");
 		second.setName("Test tester");
 		assertFalse(bucket.add(second));
 

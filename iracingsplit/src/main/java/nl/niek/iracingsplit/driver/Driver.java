@@ -18,15 +18,16 @@ public class Driver implements Comparable<Driver>
 
 	}
 
-	public Driver(int iRating)
+	public Driver(int iRating, String name)
 	{
 		this.irating = iRating;
+		this.name = name;
 	}
 
 	public final String getName()
 	{
 		return name;
-	}	
+	}
 
 	public final int getIrating()
 	{
@@ -40,14 +41,7 @@ public class Driver implements Comparable<Driver>
 
 	public final void setName(String name)
 	{
-		if (name == null || name.isEmpty())
-		{
-			throw new IllegalArgumentException("Name cannot be null or empty.");
-		}
-		else
-		{
-			this.name = name;
-		}
+		this.name = name;
 	}
 
 	@Override
