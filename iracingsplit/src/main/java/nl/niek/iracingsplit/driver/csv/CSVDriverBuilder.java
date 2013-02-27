@@ -67,7 +67,7 @@ public class CSVDriverBuilder implements IDriverBuilder
 
 	private void validateFiles(File csvFile)
 	{
-		List<File> files = new ArrayList<>();
+		List<File> files = new ArrayList<File>();
 		files.add(csvFile);
 		validateFiles(files);
 	}
@@ -99,7 +99,7 @@ public class CSVDriverBuilder implements IDriverBuilder
 	@Override
 	public List<Driver> getDrivers()
 	{
-		List<Driver> drivers = new ArrayList<>();
+		List<Driver> drivers = new ArrayList<Driver>();
 
 		for (File csv : csvFiles)
 		{

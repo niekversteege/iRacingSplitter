@@ -39,7 +39,7 @@ public class CSVDriverBuilderTest
 	@Test
 	public void testCSVDriverBuilderList()
 	{
-		List<File> files = new ArrayList<>();
+		List<File> files = new ArrayList<File>();
 
 		files.add(new File(RESULTFILE1));
 		files.add(new File(RESULTFILE2));
@@ -55,7 +55,7 @@ public class CSVDriverBuilderTest
 	@Test(expected = IllegalArgumentException.class)
 	public void testCSVDriverBuilderListNotCSV()
 	{
-		List<File> files = new ArrayList<>();
+		List<File> files = new ArrayList<File>();
 
 		files.add(new File(RESULTFILE1));
 		files.add(new File(TEXTFILE));
